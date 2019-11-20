@@ -1,0 +1,15 @@
+//fetch the invoices created today, Note, you must have at least one invoice created today
+List<apex_invoice__c> invoiceList = [SELECT id, Name, APEX_Status__c, createdDate FROM APEX_Invoice__c];
+
+//create List to hold the updated invoice records
+List<apex_invoice__c> updatedInvoiceList = new List<apex_invoice__c>();
+for (APEX_Invoice__c objInvoice: invoiceList) {
+		if (objInvoice.APEX_Status__c !='Paid') {
+			objInvoice.APEX_Status__c = 'Paid';
+			updatedInvoiceList.add(objInvoice);
+		}
+	
+}
+
+//DML Statement to update the invoice status
+update updatedInvoiceList;

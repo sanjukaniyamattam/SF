@@ -1,0 +1,10 @@
+//DML for Inserting the new Customer Records
+APEX_Customer__c objCust = new APEX_Customer__C();
+objCust.Name = 'Test ABC';
+insert objCust;
+	
+//Inserting the New Records using insert DML statement
+APEX_Invoice__c objNewInvoice = new APEX_Invoice__c();
+objNewInvoice.APEX_Status__c = 'Pending';
+objNewInvoice.APEX_Amount_Paid__c = 1000;
+objNewInvoice.APEX_Customer__c = objCust.id;
